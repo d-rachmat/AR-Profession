@@ -61,12 +61,12 @@ public class GameMenuController : MonoBehaviour
 
     private void OnEnable()
     {
-        UDTEventHandler.OnSuccess += ActivateInfoBtn;
+        //UDTEventHandler.OnSuccess += ActivateInfoBtn;
     }
 
     private void OnDisable()
     {
-        UDTEventHandler.OnSuccess -= ActivateInfoBtn;
+        //UDTEventHandler.OnSuccess -= ActivateInfoBtn;
     }
     
     public delegate void ChangeActiveChara(int index);
@@ -83,8 +83,8 @@ public class GameMenuController : MonoBehaviour
             AudioController.Instance.PlaySfx(0);
     }
 
-    public void ActivateInfoBtn()
-    {
-        InfoBtn.SetActive(true);
-    }
+    //public void ActivateInfoBtn()
+    //{
+    //    InfoBtn.SetActive(true);
+    //}
 }

@@ -40,6 +40,14 @@ public class QuizController : MonoBehaviour
         AssignQuestion(QuestionIndex);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeScene("Main");
+        }
+    }
+
     private void NextQuestion()
     {
         StartCoroutine(NextQuestionCoroutine());
@@ -84,7 +92,7 @@ public class QuizController : MonoBehaviour
         else
         {
             Text[] winText = WinCanvas.GetComponentsInChildren<Text>();
-            winText[0].text = "YOU WIN";
+            winText[0].text = "Selamat, kamu hebat!";
             winText[2].text = Score.ToString();
             if (AudioController.Instance != null)
                 AudioController.Instance.PlaySfx(3);
@@ -109,10 +117,10 @@ public class QuizController : MonoBehaviour
         //salah
         else
         {
-            ResultText.text = "Salah!";
+            ResultText.text = "Kurang Tepat!";
             //gameover
             Text[] winText = WinCanvas.GetComponentsInChildren<Text>();
-            winText[0].text = "Game Over";
+            winText[0].text = "Kamu Kurang Tepat";
             winText[2].text = Score.ToString();
             WinCanvas.SetActive(true);
             if (AudioController.Instance != null)
