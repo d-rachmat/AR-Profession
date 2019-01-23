@@ -16,8 +16,11 @@ public class GameMenuController : MonoBehaviour
     public GameObject InfoCanvas;
     public GameObject JobSelectCanvas;
     public GameObject InfoBtn;
+    public AudioSource JobInfo;
+
     public JobComponent[] JobComponents;
     private int _jobIndex;
+
     public int JobIndex 
     {
         get { return _jobIndex; }
@@ -30,13 +33,11 @@ public class GameMenuController : MonoBehaviour
 
     public void ShowInfoCanvas()
     {
-        bool isActive = (InfoCanvas.activeSelf) ? false : true;
-        InfoCanvas.SetActive(isActive);
-        CaptureBtn.enabled = !isActive;
-        if (JobSelectCanvas.activeSelf)
+        if (JobInfo!=null)
         {
-            JobSelectCanvas.SetActive(false);
-        }
+            JobInfo.Stop();
+            JobInfo.Play();
+        }        
     }
     public void ShowJobSelectCanvas()
     {
@@ -52,7 +53,15 @@ public class GameMenuController : MonoBehaviour
     {
         InfoText.text = JobComponents[JobIndex].TextInfo;
     }
-
+    public void SelectInfo(AudioSource thisAudio)
+    {
+        if (JobInfo!=null)
+        {
+            JobInfo.Stop();
+        }
+        
+        JobInfo = thisAudio;
+    }
 
     private void Start()
     {

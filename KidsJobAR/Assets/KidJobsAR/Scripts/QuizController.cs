@@ -19,6 +19,7 @@ public class QuizController : MonoBehaviour
     public Button[] AnswerBtn;
     public Text[] QuestionTexts;
     public Text ResultText;
+    public AudioSource Benar, Salah;
 
     public int Score = 0;
     private int QuestionCount;
@@ -108,8 +109,7 @@ public class QuizController : MonoBehaviour
         {
             Score += 100;           
             ResultText.text = "Benar!";
-            if(AudioController.Instance != null)
-                AudioController.Instance.PlaySfx(1);
+            Benar.Play();
             //continue
             NextQuestion();
         }
@@ -123,8 +123,7 @@ public class QuizController : MonoBehaviour
             winText[0].text = "Kamu Kurang Tepat";
             winText[2].text = Score.ToString();
             WinCanvas.SetActive(true);
-            if (AudioController.Instance != null)
-                AudioController.Instance.PlaySfx(2);
+            Salah.Play();
         }
         StartCoroutine(ShowResult());
         Debug.Log(Score);
