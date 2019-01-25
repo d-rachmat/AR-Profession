@@ -62,6 +62,11 @@ public class GameMenuController : MonoBehaviour
         
         JobInfo = thisAudio;
     }
+    public void ResetScale(GameObject Model)
+    {
+        Model.transform.localScale = new Vector3(1, 1, 1);
+        Model.transform.eulerAngles = new Vector3(0, 180, 0);
+    }
 
     private void Start()
     {
