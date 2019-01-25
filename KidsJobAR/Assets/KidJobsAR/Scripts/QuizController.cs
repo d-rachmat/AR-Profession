@@ -107,7 +107,7 @@ public class QuizController : MonoBehaviour
         //benar
         if (btnName == Questions[QuestionIndex].Name)
         {
-            Score += 100;           
+            Score += 10;           
             ResultText.text = "Benar!";
             Benar.Play();
             //continue
